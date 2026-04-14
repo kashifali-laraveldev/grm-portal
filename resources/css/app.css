@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --grm-primary: #083b4c;
+    --grm-primary-soft: #0f4e62;
+    --grm-accent: #19b55b;
+    --grm-bg: #f2f5fa;
+    --grm-card: #ffffff;
+    --grm-text: #1f2937;
+}
+
+body {
+    background: var(--grm-bg);
+    color: var(--grm-text);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.grm-navbar {
+    background: var(--grm-primary) !important;
+}
+
+.grm-navbar .nav-link,
+.grm-navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.grm-navbar .dropdown-menu {
+    background: #0a2f3c;
+    border: 1px solid #174556;
+}
+
+.grm-navbar .dropdown-item {
+    color: #d6e5eb !important;
+}
+
+.grm-navbar .dropdown-item:hover {
+    background: #16495c;
+    color: #fff !important;
+}
+
+.grm-card,
+.card {
+    border-radius: 10px;
+    border: 1px solid #dbe5ef;
+    box-shadow: 0 1px 2px rgba(12, 37, 53, 0.04);
+}
+
+.btn-success {
+    background-color: var(--grm-accent);
+    border-color: var(--grm-accent);
+}
+
+.btn-success:hover {
+    background-color: #12994c;
+    border-color: #12994c;
+}
+
+.table thead.table-light th {
+    background: #eef3f8 !important;
+    color: #1f3342;
+}
+
+.grm-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.grm-page-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.grm-subtitle {
+    color: #6b7280;
+    font-size: 0.82rem;
+}
+
+.offcanvas-header {
+    background: #eef1f4;
+    border-bottom: 1px solid #dbe1e8;
+    color: #1f2937;
+}
+
+.offcanvas-header .offcanvas-title {
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.offcanvas-header .btn-close {
+    filter: none;
+    opacity: 0.85;
+}
+
+.swal2-popup {
+    border-radius: 10px !important;
+}

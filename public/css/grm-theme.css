@@ -1,0 +1,2351 @@
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-soft: #f8f9fa;
+  --border: #dee2e6;
+  --text: #212529;
+  --muted: #6c757d;
+  --nav: #1a2332;
+  --primary: #1a2332;
+  --success: #28a745;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.grm-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fills space between nav and footer so footer stays at bottom on short pages */
+.grm-content-fill {
+  flex: 1 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.grm-footer {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.grm-navbar {
+  background: var(--nav) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.grm-navbar .navbar-brand,
+.grm-navbar .nav-link {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.grm-navbar .nav-link.active,
+.grm-navbar .nav-link:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.08);
+}
+
+.brand-dot { display: none; }
+
+.avatar-pill {
+  display: none;
+}
+
+.container-fluid.py-3,
+.container-fluid.px-3.py-3 {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+
+.page-head {
+  margin-top: 8px;
+  margin-bottom: 18px;
+}
+
+.page-title {
+  font-size: 22px;
+  margin: 2px 0 4px;
+}
+
+.page-subtitle, .breadcrumb-dark { color: var(--muted); font-size: 13px; }
+
+.breadcrumb-dark {
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.breadcrumb-dark .sep {
+  color: var(--muted);
+  margin: 0 4px;
+}
+
+.card, .table-container, .filter-card, .filters-row {
+  background: var(--surface);
+  border: 0;
+  border-radius: 8px;
+}
+
+.filter-card { padding: 14px; margin-bottom: 12px; }
+
+.form-control, .form-select {
+  background: #fff;
+  border: 1px solid var(--border);
+}
+
+.select2-container {
+  width: 100% !important;
+}
+
+/* Match Bootstrap 5 .form-select height (calc(1.5em + .75rem + 2px) ≈ 38px) */
+.select2-container--bootstrap-5 .select2-selection {
+  min-height: calc(1.5em + 0.75rem + 2px) !important;
+  border-radius: 8px !important;
+  border: 1px solid #d8dee6 !important;
+  background: #fff !important;
+  font-size: 1rem;
+  box-shadow: none !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single {
+  padding: 0.375rem 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+  color: #374151 !important;
+  line-height: 1.5 !important;
+  padding-left: 0 !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow {
+  height: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  right: 8px !important;
+}
+
+/* Multi-select: do NOT flex the outer box — chips live inside __rendered */
+.select2-container--bootstrap-5 .select2-selection--multiple {
+  min-height: calc(1.5em + 0.75rem + 2px) !important;
+  height: auto !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  row-gap: 6px !important;
+  padding: 2px 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  list-style: none !important;
+}
+
+/* Select2 uses floats on <li> chips — disable when using flex parent */
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered > .select2-selection__choice,
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered > .select2-search {
+  float: none !important;
+}
+
+.select2-container--bootstrap-5.select2-container--focus .select2-selection {
+  border-color: #9fb8ff !important;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.12) !important;
+}
+
+.select2-dropdown {
+  border-radius: 8px !important;
+  border: 1px solid #d8dee6 !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+}
+
+.select2-search--dropdown .select2-search__field {
+  border: 1px solid #d8dee6 !important;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+/* Dropdown: hover / keyboard — light grey (not default blue) */
+.select2-results__option--highlighted {
+  background: #e9ecef !important;
+  color: #212529 !important;
+}
+
+.select2-results__option[aria-selected="true"],
+.select2-container--bootstrap-5 .select2-results__option--selected {
+  background-color: #f1f3f5 !important;
+  color: #374151 !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__choice {
+  background-color: #f3f4f6 !important;
+  border: 1px solid #dde3ea !important;
+  color: #334155 !important;
+  border-radius: 999px !important;
+  padding: 4px 10px 4px 6px !important;
+  margin: 0 !important;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25 !important;
+  height: auto !important;
+  max-width: 100%;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: normal !important;
+  word-break: break-word;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__choice__remove {
+  color: #7b8794 !important;
+  border-right: 0 !important;
+  margin-right: 6px !important;
+  padding: 0 2px 0 0 !important;
+  float: none !important;
+  position: static !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-search {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 1 1 120px !important;
+  min-width: 80px !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-search__field {
+  margin: 0 !important;
+  padding: 4px 2px !important;
+  min-height: 28px !important;
+  line-height: 1.25 !important;
+  font-size: 13px;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__clear {
+  margin-right: 6px !important;
+  color: #8b95a1 !important;
+}
+
+.btn-add {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-filter { font-size: 12px; padding: 4px 10px; }
+
+.btn-ghost {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.table thead th {
+  background: var(--surface-soft) !important;
+  border-bottom: 2px solid var(--border) !important;
+}
+
+.table tbody tr:hover { background: rgba(13, 110, 253, 0.04); }
+
+.mono { font-family: "IBM Plex Mono", monospace; color: #0d6efd; }
+
+.status-pill {
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+button.status-pill.status-pill-toggle {
+  cursor: pointer;
+  font: inherit;
+  line-height: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+button.status-pill.status-pill-toggle:hover {
+  filter: brightness(0.96);
+}
+
+button.status-pill.status-pill-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.status-pill.active { background: #e8f7ec; color: #198754; border-color: #c3e6cb; }
+.status-pill.dormant { background: #fff3cd; color: #856404; border-color: #ffeeba; }
+.status-pill.disposed { background: #fdecea; color: #dc3545; border-color: #f5c6cb; }
+.status-pill.liquidation, .status-pill.neutral { background: #eef1f4; color: #6c757d; border-color: #d6dbe1; }
+.status-pill.under-liquidation { background: rgba(163, 113, 247, 0.15); color: #a371f7; border-color: rgba(163,113,247,0.3); }
+
+/* Timeline View status badges (aligned with Legal Entity pill style) */
+.status-pill.timeline-on-time { background: #e8f7ec; color: #198754; border-color: #c3e6cb; }
+.status-pill.timeline-before-time { background: #e7f1ff; color: #0a58ca; border-color: #b6d4fe; }
+.status-pill.timeline-delayed { background: #fff3cd; color: #856404; border-color: #ffeeba; }
+.status-pill.timeline-overdue { background: #fdecea; color: #dc3545; border-color: #f5c6cb; }
+.status-pill.timeline-due-today { background: #cfe2ff; color: #084298; border-color: #9ec5fe; }
+.status-pill.timeline-not-due { background: #eef1f4; color: #6c757d; border-color: #d6dbe1; }
+
+.icon-action, .action-btn {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.action-btn,
+a.icon-action {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.icon-action.view, .action-btn.view { color: #0d6efd !important; }
+.icon-action.graph, .action-btn.graph { color: #6f42c1 !important; }
+.icon-action.edit, .action-btn.edit { color: #198754 !important; }
+.icon-action.delete, .action-btn.delete { color: #dc3545 !important; }
+
+.offcanvas, .modal-content {
+  background: #fff;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* Light header + dark title (matches Legal Entity drawer); avoids white-on-light when app.css overrides bg */
+.offcanvas-header {
+  background: #eef1f4;
+  border-bottom: 1px solid #dbe1e8;
+  color: #1f2937;
+}
+
+.offcanvas-title {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.offcanvas-header .btn-close {
+  filter: none;
+  opacity: 0.85;
+}
+
+/* Legal Entity drawer sizing + readable light header */
+.legal-entity-page #entityFormOffcanvas {
+  width: min(760px, 95vw) !important;
+}
+
+.legal-entity-page #entityFormOffcanvas .offcanvas-header {
+  background: #eef1f4 !important;
+  border-bottom: 1px solid #dbe1e8;
+  color: #1f2937 !important;
+}
+
+.legal-entity-page #entityFormOffcanvas .offcanvas-title {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+.legal-entity-page #entityFormOffcanvas .btn-close {
+  filter: none;
+  opacity: 0.85;
+}
+
+/* Report Matrix — document vault drawer (same header / width pattern as entity form) */
+.legal-entity-page #reportMatrixDocsDrawer {
+  width: min(440px, 92vw) !important;
+}
+
+.legal-entity-page #reportMatrixDocsDrawer .offcanvas-header {
+  background: #eef1f4 !important;
+  border-bottom: 1px solid #dbe1e8;
+  color: #1f2937 !important;
+}
+
+.legal-entity-page #reportMatrixDocsDrawer .offcanvas-title {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+.legal-entity-page #reportMatrixDocsDrawer .btn-close {
+  filter: none;
+  opacity: 0.85;
+}
+
+/* Entity detail — document vault drawer (Legal Entity / Report Matrix theme) */
+.legal-entity-page #entityVaultDrawer {
+  width: min(560px, 94vw) !important;
+}
+
+.legal-entity-page #entityVaultDrawer .offcanvas-header {
+  background: #eef1f4 !important;
+  border-bottom: 1px solid #dbe1e8;
+  color: #1f2937 !important;
+}
+
+.legal-entity-page #entityVaultDrawer .offcanvas-title {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+.legal-entity-page #entityVaultDrawer .btn-close {
+  filter: none;
+  opacity: 0.85;
+}
+
+.legal-entity-page .grm-entity-detail-grid .grm-profile-label {
+  margin-bottom: 0.2rem;
+}
+
+.legal-entity-page table.grm-entity-vault-table {
+  table-layout: fixed;
+}
+
+.legal-entity-page table.grm-entity-vault-table th,
+.legal-entity-page table.grm-entity-vault-table td {
+  vertical-align: middle;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-th-num,
+.legal-entity-page .grm-entity-vault-table .grm-ev-td-num {
+  width: 2.5rem;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-th-file,
+.legal-entity-page .grm-entity-vault-table .grm-ev-td-file {
+  width: 38%;
+  min-width: 140px;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-file-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-th-type,
+.legal-entity-page .grm-entity-vault-table .grm-ev-td-type {
+  width: 22%;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-th-exp,
+.legal-entity-page .grm-entity-vault-table .grm-ev-td-exp {
+  width: 7.5rem;
+  white-space: nowrap;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-th-rem,
+.legal-entity-page .grm-entity-vault-table .grm-ev-td-rem {
+  width: 5.5rem;
+  white-space: nowrap;
+}
+
+.legal-entity-page .grm-entity-vault-table .grm-ev-th-act,
+.legal-entity-page .grm-entity-vault-table .grm-ev-td-act {
+  width: 3.25rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.legal-entity-page .grm-entity-vault-table-wrap {
+  border-color: #e9edf2 !important;
+}
+
+.legal-entity-page .grm-rm-doc-list .grm-rm-doc-item {
+  border-color: #e9edf2;
+}
+
+.legal-entity-page .grm-rm-doc-list .grm-rm-doc-item:hover {
+  background: #f8fafc;
+}
+
+/* Generate New Period drawer (Legal Entity–aligned width + header) */
+#periodDrawer {
+  width: min(440px, 92vw) !important;
+}
+
+#periodDrawer .offcanvas-header {
+  background: #eef1f4 !important;
+  border-bottom: 1px solid #dbe1e8;
+  color: #1f2937 !important;
+}
+
+#periodDrawer .offcanvas-title {
+  color: #1f2937 !important;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+#periodDrawer .btn-close {
+  filter: none;
+  opacity: 0.85;
+}
+
+.pagination .page-link {
+  color: var(--primary);
+  background-color: #fff;
+  border-color: var(--border);
+}
+
+/* Active page: light grey surface + dark text (numbers stay visible; avoids navy-on-navy) */
+.pagination .page-item.active .page-link {
+  z-index: 1;
+  background-color: #e9ecef !important;
+  border-color: #dee2e6 !important;
+  color: #212529 !important;
+  font-weight: 600;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #adb5bd;
+  background-color: #fff;
+}
+
+div.dataTables_wrapper div.dataTables_filter input,
+div.dataTables_wrapper div.dataTables_length select {
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.legal-entity-page .page-head {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.legal-entity-page .filter-card {
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.legal-entity-page .legal-filter-shell .card-body {
+  padding: 0.5rem 1rem;
+}
+
+.legal-entity-page .legal-head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2px 2px;
+  align-items: flex-start;
+}
+
+.legal-entity-page .breadcrumb-dark {
+  font-size: 11px;
+  color: #9aa2af;
+  margin-top: 0;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.legal-entity-page .breadcrumb-dark .sep {
+  color: #b3bac5;
+  margin: 0 5px;
+}
+
+.legal-entity-page .page-title {
+  font-size: 24px;
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+
+.legal-entity-page .legal-add-btn {
+  min-width: 138px;
+  height: 34px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 0 12px;
+  margin-top: 0;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  gap: 4px;
+}
+
+.legal-entity-page .legal-add-btn:hover,
+.legal-entity-page .legal-add-btn:focus,
+.legal-entity-page .legal-add-btn:active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+.legal-entity-page .legal-head-left {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.legal-entity-page .legal-top-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.legal-entity-page .legal-top-btn {
+  background: #0b3a52;
+  color: #fff;
+  border: none;
+  font-size: 11px;
+}
+
+.legal-entity-page .legal-top-btn:hover {
+  background: #0a2f43;
+  color: #fff;
+}
+
+/* Demo: full-portal actions shown as available in full version only */
+.legal-entity-page .grm-coming-soon-btn {
+  cursor: pointer;
+  opacity: 0.9;
+  border: 1px dashed rgba(255, 255, 255, 0.45) !important;
+}
+
+.legal-entity-page .grm-coming-soon-btn:hover,
+.legal-entity-page .grm-coming-soon-btn:focus {
+  opacity: 1;
+  color: #fff;
+}
+
+.legal-entity-page .grm-toolbar-soon {
+  cursor: pointer;
+  opacity: 0.92;
+  border: 1px dashed rgba(11, 58, 82, 0.45) !important;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.legal-entity-page .grm-export-purple {
+  background: #6f42c1;
+  border-color: #6f42c1;
+  color: #fff;
+}
+
+.legal-entity-page .grm-export-purple:hover {
+  background: #5a32a3;
+  border-color: #5a32a3;
+  color: #fff;
+}
+
+/* —— Entity ownership graph (enterprise workspace) —— */
+.grm-entity-graph-workspace {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, #1a2332 0%, #15202b 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar .btn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar .btn-grm-graph {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar .btn-grm-graph:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar .btn-grm-graph-primary {
+  background: #157a6e;
+  border-color: #157a6e;
+  color: #fff;
+}
+
+.grm-entity-graph-workspace .grm-graph-toolbar .btn-grm-graph-primary:hover {
+  background: #126a5f;
+  border-color: #126a5f;
+  color: #fff;
+}
+
+.grm-entity-graph-workspace .grm-graph-zoom-pill {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.grm-graph-viewport {
+  position: relative;
+  height: min(72vh, 780px);
+  overflow: hidden;
+  background-color: #eef2f6;
+  background-image:
+    linear-gradient(rgba(26, 35, 50, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 35, 50, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center center;
+  cursor: grab;
+  touch-action: none;
+}
+
+.grm-graph-viewport.grm-graph-viewport--dragging {
+  cursor: grabbing;
+}
+
+.grm-graph-canvas {
+  width: max-content;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 28px 36px 36px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* —— Top-down org chart: parent on top, children in row(s) below + connectors —— */
+.grm-graph-canvas .grm-graph-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* Multiple roots (rare): side by side at top */
+.grm-graph-canvas .grm-graph-tree--root {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem 3.5rem;
+}
+
+/* Child tier: siblings in a row, wrap into extra rows (Finance-style multi-column feel) */
+.grm-graph-canvas .grm-graph-tree:not(.grm-graph-tree--root) {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem 1.5rem;
+  max-width: min(920px, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2px;
+  padding: 20px 12px 8px;
+  position: relative;
+}
+
+/* Horizontal rail under parent (ties siblings) */
+.grm-graph-canvas .grm-graph-tree:not(.grm-graph-tree--root)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: rgba(26, 35, 50, 0.2);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* Vertical drop from rail to each child card */
+.grm-graph-canvas .grm-graph-tree:not(.grm-graph-tree--root) > .grm-graph-branch {
+  padding-top: 16px;
+  position: relative;
+}
+
+.grm-graph-canvas .grm-graph-tree:not(.grm-graph-tree--root) > .grm-graph-branch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 16px;
+  background: rgba(26, 35, 50, 0.2);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.grm-graph-canvas .grm-graph-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0 0.25rem;
+  position: relative;
+}
+
+/* Stem from parent card down toward child tier */
+.grm-graph-canvas .grm-graph-branch:has(> .grm-graph-tree) > .grm-graph-node {
+  position: relative;
+  z-index: 1;
+}
+
+.grm-graph-canvas .grm-graph-branch:has(> .grm-graph-tree) > .grm-graph-node::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 18px;
+  margin: 8px auto 0;
+  background: rgba(26, 35, 50, 0.2);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.grm-graph-canvas .grm-graph-branch > .grm-graph-tree {
+  flex: 0 1 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.grm-graph-node {
+  border-radius: 10px;
+  border: 1px solid rgba(26, 35, 50, 0.12);
+  padding: 11px 14px;
+  min-width: 188px;
+  max-width: 280px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.07);
+  transition: box-shadow 0.2s ease, outline 0.2s ease, transform 0.15s ease;
+}
+
+.grm-graph-node:hover {
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.11);
+}
+
+.grm-graph-node.grm-graph-node--flash {
+  outline: 3px solid #157a6e;
+  outline-offset: 2px;
+  animation: grm-graph-pulse 1.2s ease-out 2;
+}
+
+@keyframes grm-graph-pulse {
+  0% { outline-color: #157a6e; }
+  50% { outline-color: #34d399; }
+  100% { outline-color: #157a6e; }
+}
+
+.grm-graph-node-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a2332;
+  line-height: 1.3;
+}
+
+.grm-graph-node-meta {
+  display: block;
+  font-size: 11px;
+  color: #475569;
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.grm-graph-node--subsidiary {
+  background: #bfdbfe;
+}
+
+.grm-graph-node--associate {
+  background: #fde68a;
+}
+
+.grm-graph-node--jv {
+  background: #fef3c7;
+}
+
+.grm-graph-node--branch {
+  background: #e2e8f0;
+}
+
+.grm-graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  padding: 10px 14px;
+  background: var(--surface-soft);
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.grm-graph-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.grm-graph-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(26, 35, 50, 0.15);
+}
+
+.grm-graph-legend .grm-leg-subsidiary { background: #93c5fd; }
+.grm-graph-legend .grm-leg-associate { background: #fde68a; }
+.grm-graph-legend .grm-leg-jv { background: #fef3c7; }
+.grm-graph-legend .grm-leg-branch { background: #d1d5db; }
+
+.legal-entity-page .card,
+.legal-entity-page .table-container {
+  border: 0;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.legal-entity-page .metric-card {
+  border: 0 !important;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05) !important;
+  border-radius: 10px;
+}
+
+/* Role edit: category strip (Dashboard, Group Finance Matrix, …) */
+/* Module Categories listing (Manage Modules) */
+.legal-entity-page .module-category-card {
+  border: 0;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.legal-entity-page .module-category-card-header {
+  background: #e2dfdf;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  font-size: 14px;
+  color: #334155;
+  border-bottom: 1px solid #d4d0d0;
+}
+
+.legal-entity-page .module-category-card-body {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.legal-entity-page .module-category-module-list {
+  padding-left: 1.15rem;
+  margin: 0;
+  color: #4b5563;
+}
+
+.legal-entity-page .module-category-module-list li {
+  margin-bottom: 0.2rem;
+}
+
+.legal-entity-page .module-category-read-more-wrap {
+  list-style: none;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  padding-left: 1.35rem;
+}
+
+.legal-entity-page .role-read-more-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+}
+
+.legal-entity-page .role-read-more-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.legal-entity-page .permission-module-card {
+  overflow: hidden;
+}
+
+.legal-entity-page .permission-module-card .card-body {
+  padding: 1rem 1.25rem 1.1rem;
+}
+
+.legal-entity-page .permission-module-card-title {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: #334155;
+  margin: -1rem -1.25rem 0.9rem -1.25rem;
+  padding: 0.65rem 1.25rem;
+  background: #e2dfdf;
+  border-bottom: 1px solid #d4d0d0;
+}
+
+/* —— Profile page (professional layout, Legal Entity family) —— */
+.legal-entity-page .grm-profile-card {
+  overflow: hidden;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legal-entity-page .grm-profile-card > .card-body {
+  padding: 0;
+}
+
+.legal-entity-page .grm-profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.4rem 1.5rem;
+  background: linear-gradient(125deg, #f8fafc 0%, #eef2f7 45%, #f1f5f9 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.legal-entity-page .grm-profile-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #1a2332 0%, #243548 55%, #157a6e 130%);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow:
+    0 4px 14px rgba(26, 35, 50, 0.18),
+    0 0 0 3px rgba(255, 255, 255, 0.85);
+}
+
+.legal-entity-page .grm-profile-hero-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.legal-entity-page .grm-profile-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+  margin: 0 0 0.2rem;
+}
+
+.legal-entity-page .grm-profile-email {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legal-entity-page .grm-profile-email .bi {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.legal-entity-page .grm-profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.legal-entity-page .grm-profile-role-pill {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: rgba(26, 35, 50, 0.06);
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.legal-entity-page .grm-profile-form {
+  padding: 0;
+}
+
+.legal-entity-page .grm-profile-section {
+  padding: 0 1.25rem 1.15rem;
+}
+
+.legal-entity-page .grm-profile-section .permission-module-card-title {
+  margin: 0 -1.25rem 1rem -1.25rem;
+}
+
+.legal-entity-page .grm-profile-section--first {
+  padding-top: 0.25rem;
+}
+
+.legal-entity-page .grm-profile-section--first .permission-module-card-title {
+  margin-top: 0;
+}
+
+.legal-entity-page .grm-profile-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.legal-entity-page .grm-profile-input-wrap {
+  position: relative;
+}
+
+.legal-entity-page .grm-profile-input-wrap .grm-profile-input-icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.legal-entity-page .grm-profile-input-wrap .form-control:not(:disabled) {
+  padding-left: 2.55rem;
+  border-radius: 8px;
+  border-color: #d8dee6;
+}
+
+.legal-entity-page .grm-profile-input-wrap .form-control:not(:disabled):focus {
+  border-color: #9fb8ff;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
+}
+
+.legal-entity-page .form-control.grm-profile-readonly,
+.legal-entity-page .grm-profile-input-wrap .form-control:disabled {
+  padding-left: 2.55rem;
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+  border-radius: 8px;
+  cursor: not-allowed;
+}
+
+.legal-entity-page .grm-profile-footer {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(180deg, #fafbfc 0%, #f4f6f9 100%);
+  border-top: 1px solid #e8edf2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.legal-entity-page .grm-profile-footer-hint {
+  margin-right: auto;
+  font-size: 12px;
+  color: #94a3b8;
+  max-width: 420px;
+  line-height: 1.4;
+}
+
+/* Role edit: do not use padding shorthand on .form-check — it wipes Bootstrap’s padding-left
+   and the checkbox (margin-left: -1.5em) sits outside the card. */
+.legal-entity-page .permission-check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  column-gap: 1.25rem;
+  row-gap: 0.25rem;
+  padding: 0.35rem 0 0 0;
+  align-items: start;
+}
+
+.legal-entity-page .permission-check-grid .form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0.5rem 0.65rem 0.5rem 0.65rem;
+  min-height: 0;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.legal-entity-page .permission-check-grid .form-check-input {
+  float: none;
+  position: static;
+  margin-top: 0.2em;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+.legal-entity-page .permission-check-grid .form-check-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.35;
+  font-size: 13px;
+  color: #374151;
+  padding-top: 0.05em;
+  cursor: pointer;
+}
+
+.legal-entity-page .permission-check-grid .form-check:hover {
+  background: #f4f7fb;
+  border-color: #e2e8f0;
+}
+
+.legal-entity-page .finance-stat-card-header {
+  background: #f8fafc;
+  border-bottom: 1px solid #e8edf2;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.65rem 1rem;
+  color: #1f2937;
+}
+
+.finance-statistics-page .finance-stat-card-header .bi {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+/* —— Finance Statistics: enterprise KPI + charts (GRM theme) —— */
+.finance-statistics-page .finance-kpi-grid {
+  margin-bottom: 0;
+}
+
+.finance-statistics-page .finance-kpi-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.35rem 1.25rem 1.5rem;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 55%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px rgba(15, 23, 42, 0.07);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.finance-statistics-page .finance-kpi-tile:hover {
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    0 12px 32px rgba(15, 23, 42, 0.09);
+  border-color: #d1dae5;
+}
+
+.finance-statistics-page .finance-kpi-tile::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+  background: var(--primary);
+}
+
+.finance-statistics-page .finance-kpi-tile--capital::before {
+  background: linear-gradient(180deg, #198754 0%, #146c43 100%);
+}
+
+.finance-statistics-page .finance-kpi-tile--shares::before {
+  background: linear-gradient(180deg, #0d6efd 0%, #0a58ca 100%);
+}
+
+.finance-statistics-page .finance-kpi-tile--inactive::before {
+  background: linear-gradient(180deg, #dc3545 0%, #b02a37 100%);
+}
+
+.finance-statistics-page .finance-kpi-tile--inactive .finance-kpi-tile-icon {
+  background: rgba(220, 53, 69, 0.12);
+  color: #b02a37;
+}
+
+.finance-statistics-page .finance-kpi-tile-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(26, 35, 50, 0.07);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.finance-statistics-page .finance-kpi-tile--capital .finance-kpi-tile-icon {
+  background: rgba(25, 135, 84, 0.12);
+  color: #146c43;
+}
+
+.finance-statistics-page .finance-kpi-tile--shares .finance-kpi-tile-icon {
+  background: rgba(13, 110, 253, 0.12);
+  color: #0a58ca;
+}
+
+.finance-statistics-page .finance-kpi-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.finance-statistics-page .finance-kpi-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.finance-statistics-page .finance-chart-shell {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e8edf2;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.finance-statistics-page .finance-chart-shell .card-header.finance-stat-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0;
+}
+
+.finance-statistics-page .finance-chart-shell .finance-chart-card-body {
+  padding: 1.25rem 1.35rem 1.5rem;
+  background: linear-gradient(180deg, #fafbfc 0%, #ffffff 45%);
+}
+
+.finance-statistics-page .finance-chart-wrap {
+  position: relative;
+  min-height: 280px;
+  max-height: 340px;
+}
+
+.finance-statistics-page .finance-chart-wrap canvas {
+  max-height: 320px;
+}
+
+.legal-entity-page .table-container {
+  border-radius: 10px;
+}
+
+.legal-entity-page .legal-datatable-search-mount {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.legal-entity-page .legal-datatable-search-mount .legal-common-search-wrap {
+  width: 100%;
+  max-width: 320px;
+}
+
+.legal-entity-page .table thead th {
+  border-bottom: 1px solid #e8edf2 !important;
+  font-size: 12px;
+  color: #495057;
+  white-space: nowrap;
+  vertical-align: middle;
+  position: relative;
+}
+
+.legal-entity-page table.dataTable thead .sorting:before,
+.legal-entity-page table.dataTable thead .sorting:after,
+.legal-entity-page table.dataTable thead .sorting_asc:before,
+.legal-entity-page table.dataTable thead .sorting_asc:after,
+.legal-entity-page table.dataTable thead .sorting_desc:before,
+.legal-entity-page table.dataTable thead .sorting_desc:after {
+  right: 6px;
+}
+
+.legal-entity-page .table td,
+.legal-entity-page .table th {
+  border-color: #eef2f6;
+}
+
+.legal-entity-page .legal-entity-table td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 48px;
+  vertical-align: middle;
+}
+
+.legal-entity-page .legal-entity-table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.legal-entity-page .legal-entity-table tbody tr:nth-child(even) {
+  background: #fbfcfd;
+}
+
+.legal-entity-page .legal-entity-table tbody tr:hover {
+  background: #f2f7ff;
+}
+
+.legal-entity-page .legal-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.legal-entity-page .legal-search-input-wrap {
+  position: relative;
+  width: 300px;
+}
+
+.legal-entity-page .legal-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #98a2b3;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.legal-entity-page .legal-search-input {
+  border-radius: 999px;
+  padding-left: 30px;
+}
+
+.legal-entity-page .legal-common-search-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.legal-entity-page #entityTable_filter,
+.legal-entity-page #timelineTable_filter,
+.legal-entity-page #auditTable_filter,
+.legal-entity-page #shareholderTable_filter,
+.legal-entity-page #draftEntitiesTable_filter,
+.legal-entity-page #generatedPeriodsTable_filter,
+.legal-entity-page #deliverablesAllTable_filter,
+.legal-entity-page #usersTable_filter,
+.legal-entity-page #modulesTable_filter,
+.legal-entity-page #teamsTable_filter,
+.legal-entity-page #emailGroupsTable_filter,
+.legal-entity-page #emailRecipientsTable_filter,
+.legal-entity-page #emailNotificationsTable_filter,
+.legal-entity-page #emailTemplatesTable_filter,
+.legal-entity-page #deliverablesTemplatesTable_filter,
+.legal-entity-page #reportMatrixTable_filter {
+  margin: 0;
+  width: 100%;
+}
+
+.legal-entity-page #entityTable_filter label,
+.legal-entity-page #timelineTable_filter label,
+.legal-entity-page #auditTable_filter label,
+.legal-entity-page #shareholderTable_filter label,
+.legal-entity-page #draftEntitiesTable_filter label,
+.legal-entity-page #generatedPeriodsTable_filter label,
+.legal-entity-page #deliverablesAllTable_filter label,
+.legal-entity-page #usersTable_filter label,
+.legal-entity-page #modulesTable_filter label,
+.legal-entity-page #teamsTable_filter label,
+.legal-entity-page #emailGroupsTable_filter label,
+.legal-entity-page #emailRecipientsTable_filter label,
+.legal-entity-page #emailNotificationsTable_filter label,
+.legal-entity-page #emailTemplatesTable_filter label,
+.legal-entity-page #deliverablesTemplatesTable_filter label,
+.legal-entity-page #reportMatrixTable_filter label {
+  font-size: 0;
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
+/* Match filter row Select2 / .form-select: standard height + 8px radius (not pill) */
+.legal-entity-page #entityTable_filter input[type="search"],
+.legal-entity-page #timelineTable_filter input[type="search"],
+.legal-entity-page #auditTable_filter input[type="search"],
+.legal-entity-page #shareholderTable_filter input[type="search"],
+.legal-entity-page #draftEntitiesTable_filter input[type="search"],
+.legal-entity-page #generatedPeriodsTable_filter input[type="search"],
+.legal-entity-page #deliverablesAllTable_filter input[type="search"],
+.legal-entity-page #usersTable_filter input[type="search"],
+.legal-entity-page #modulesTable_filter input[type="search"],
+.legal-entity-page #teamsTable_filter input[type="search"],
+.legal-entity-page #emailGroupsTable_filter input[type="search"],
+.legal-entity-page #emailRecipientsTable_filter input[type="search"],
+.legal-entity-page #emailNotificationsTable_filter input[type="search"],
+.legal-entity-page #emailTemplatesTable_filter input[type="search"],
+.legal-entity-page #deliverablesTemplatesTable_filter input[type="search"],
+.legal-entity-page #reportMatrixTable_filter input[type="search"] {
+  width: 100% !important;
+  max-width: 320px;
+  min-height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem 0.375rem 2.25rem !important;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #374151;
+  background-color: #fff;
+  border: 1px solid #d8dee6 !important;
+  border-radius: 8px !important;
+  box-shadow: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3E%3Cpath fill='%2398a2b3' d='M11.742 10.344l3.387 3.387l-1.398 1.398l-3.387-3.387a6 6 0 1 1 1.398-1.398M6.5 11A4.5 4.5 0 1 0 6.5 2a4.5 4.5 0 0 0 0 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.65rem center;
+}
+
+.legal-entity-page #entityTable_filter input[type="search"]:focus,
+.legal-entity-page #timelineTable_filter input[type="search"]:focus,
+.legal-entity-page #auditTable_filter input[type="search"]:focus,
+.legal-entity-page #shareholderTable_filter input[type="search"]:focus,
+.legal-entity-page #draftEntitiesTable_filter input[type="search"]:focus,
+.legal-entity-page #generatedPeriodsTable_filter input[type="search"]:focus,
+.legal-entity-page #deliverablesAllTable_filter input[type="search"]:focus,
+.legal-entity-page #usersTable_filter input[type="search"]:focus,
+.legal-entity-page #modulesTable_filter input[type="search"]:focus,
+.legal-entity-page #teamsTable_filter input[type="search"]:focus,
+.legal-entity-page #emailGroupsTable_filter input[type="search"]:focus,
+.legal-entity-page #emailRecipientsTable_filter input[type="search"]:focus,
+.legal-entity-page #emailNotificationsTable_filter input[type="search"]:focus,
+.legal-entity-page #emailTemplatesTable_filter input[type="search"]:focus,
+.legal-entity-page #deliverablesTemplatesTable_filter input[type="search"]:focus,
+.legal-entity-page #reportMatrixTable_filter input[type="search"]:focus {
+  border-color: #9fb8ff !important;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.12);
+}
+
+.legal-entity-page .legal-filter-actions {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.legal-entity-page .legal-filter-btn {
+  height: calc(1.5em + 0.75rem + 2px);
+  min-width: 122px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.legal-entity-page .legal-filter-btn.btn-add:hover,
+.legal-entity-page .legal-filter-btn.btn-add:focus,
+.legal-entity-page .legal-filter-btn.btn-add:active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  transform: none;
+  box-shadow: none;
+}
+
+.legal-entity-page .legal-mini-action {
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+.legal-entity-page #entityTable_wrapper .dataTables_info,
+.legal-entity-page #timelineTable_wrapper .dataTables_info,
+.legal-entity-page #auditTable_wrapper .dataTables_info,
+.legal-entity-page #shareholderTable_wrapper .dataTables_info,
+.legal-entity-page #draftEntitiesTable_wrapper .dataTables_info,
+.legal-entity-page #generatedPeriodsTable_wrapper .dataTables_info,
+.legal-entity-page #deliverablesAllTable_wrapper .dataTables_info,
+.legal-entity-page #usersTable_wrapper .dataTables_info,
+.legal-entity-page #modulesTable_wrapper .dataTables_info,
+.legal-entity-page #teamsTable_wrapper .dataTables_info,
+.legal-entity-page #emailGroupsTable_wrapper .dataTables_info,
+.legal-entity-page #emailRecipientsTable_wrapper .dataTables_info,
+.legal-entity-page #emailNotificationsTable_wrapper .dataTables_info,
+.legal-entity-page #emailTemplatesTable_wrapper .dataTables_info,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .dataTables_info,
+.legal-entity-page #reportMatrixTable_wrapper .dataTables_info {
+  padding-top: 0;
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.legal-entity-page #entityTable_wrapper .pagination .page-link,
+.legal-entity-page #timelineTable_wrapper .pagination .page-link,
+.legal-entity-page #auditTable_wrapper .pagination .page-link,
+.legal-entity-page #shareholderTable_wrapper .pagination .page-link,
+.legal-entity-page #draftEntitiesTable_wrapper .pagination .page-link,
+.legal-entity-page #generatedPeriodsTable_wrapper .pagination .page-link,
+.legal-entity-page #deliverablesAllTable_wrapper .pagination .page-link,
+.legal-entity-page #usersTable_wrapper .pagination .page-link,
+.legal-entity-page #modulesTable_wrapper .pagination .page-link,
+.legal-entity-page #teamsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailGroupsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailRecipientsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailNotificationsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailTemplatesTable_wrapper .pagination .page-link,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .pagination .page-link,
+.legal-entity-page #reportMatrixTable_wrapper .pagination .page-link {
+  padding: 4px 10px;
+}
+
+.legal-entity-page .legal-table-footer {
+  border-top: 1px solid #e9edf2;
+}
+
+.legal-entity-page .legal-footer-pagination {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dashboard-page .card,
+.dashboard-page .chart-card,
+.dashboard-page .metric-card,
+.dashboard-page .table-container {
+  border: 0 !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+}
+
+.dashboard-page .metric-card::before {
+  display: none;
+}
+
+.dashboard-page .page-head {
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding: 2px 2px;
+}
+
+.dashboard-page .dashboard-filter-shell .card-body {
+  padding: 0.5rem 1rem;
+}
+
+.dashboard-page .dashboard-filter-card {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.dashboard-page .dashboard-filter-card .form-label {
+  font-size: 12px;
+  color: #6f7681;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-page .dashboard-filter-btn {
+  height: calc(1.5em + 0.75rem + 2px);
+  min-width: 110px;
+  border-radius: 6px;
+}
+
+.dashboard-page .dashboard-group-card .card-header {
+  background: #f8fafc;
+  border-bottom: 1px solid #e8edf2;
+  font-weight: 600;
+}
+
+.dashboard-page .dashboard-legend {
+  border-bottom: 1px solid #edf1f5;
+  padding-bottom: 8px;
+}
+
+.dashboard-page .dashboard-group-card .card-body {
+  padding-bottom: 1.75rem;
+}
+
+.dashboard-page .chart-card {
+  padding: 0 0.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.dashboard-page .chart-card canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-page .chart-title {
+  text-align: center;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ===== Global page sync (Legal Entity look across modules) ===== */
+.grm-sync-page .page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding: 2px 2px;
+}
+
+.grm-sync-page .page-head > div:first-child {
+  flex: 1 1 auto;
+}
+
+.grm-sync-page .breadcrumb-dark {
+  font-size: 11px;
+  color: #9aa2af;
+  margin-top: 0;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.grm-sync-page .page-title {
+  font-size: 24px;
+  line-height: 1.1;
+  margin: 0 0 2px;
+}
+
+.grm-sync-page .page-subtitle {
+  color: #6f7681;
+  margin-bottom: 0;
+}
+
+.grm-sync-page .card,
+.grm-sync-page .table-container {
+  border: 0;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.grm-sync-page .table-container {
+  border-radius: 10px;
+}
+
+.grm-sync-page .filter-card {
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.grm-sync-page .card .card-body {
+  padding: 0.75rem 1rem;
+}
+
+.grm-sync-page .table thead th {
+  border-bottom: 1px solid #e8edf2 !important;
+  font-size: 12px;
+  color: #495057;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.grm-sync-page .table td,
+.grm-sync-page .table th {
+  border-color: #eef2f6;
+}
+
+.grm-sync-page .table tbody tr:nth-child(even) {
+  background: #fbfcfd;
+}
+
+.grm-sync-page .table tbody tr:hover {
+  background: #f2f7ff;
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_filter {
+  float: none;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_filter label {
+  font-size: 0;
+  margin: 0;
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_filter input[type="search"] {
+  width: 100% !important;
+  max-width: 320px;
+  min-height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem 0.375rem 2.25rem !important;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #374151;
+  background-color: #fff;
+  border: 1px solid #d8dee6 !important;
+  border-radius: 8px !important;
+  box-shadow: none;
+  margin-left: 0 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3E%3Cpath fill='%2398a2b3' d='M11.742 10.344l3.387 3.387l-1.398 1.398l-3.387-3.387a6 6 0 1 1 1.398-1.398M6.5 11A4.5 4.5 0 1 0 6.5 2a4.5 4.5 0 0 0 0 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.65rem center;
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+  border-color: #9fb8ff !important;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.12);
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_info {
+  padding-top: 0;
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_paginate {
+  margin-top: 0;
+}
+
+.grm-sync-page .dataTables_wrapper .dataTables_paginate .pagination {
+  justify-content: flex-end;
+}
+
+/* Hide numeric pagination on most sync tables (Prev/Next only) */
+.grm-sync-page .dataTables_wrapper .pagination .paginate_button:not(.previous):not(.next):not(.disabled),
+.grm-sync-page .pagination .page-item:not(:first-child):not(:last-child) {
+  display: none !important;
+}
+
+/* Legal Entity + Timeline + Audit: full numbered pagination (override rule above) */
+.grm-sync-page .legal-entity-page #entityTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #timelineTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #auditTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #shareholderTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #draftEntitiesTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #generatedPeriodsTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #deliverablesAllTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #usersTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #modulesTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #teamsTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #emailGroupsTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #emailRecipientsTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #emailNotificationsTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #emailTemplatesTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #deliverablesTemplatesTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #reportMatrixTable_wrapper .dataTables_paginate li.page-item,
+.grm-sync-page .legal-entity-page #entityTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #timelineTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #auditTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #shareholderTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #draftEntitiesTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #generatedPeriodsTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #deliverablesAllTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #usersTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #modulesTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #teamsTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #emailGroupsTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #emailRecipientsTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #emailNotificationsTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #emailTemplatesTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #deliverablesTemplatesTable_wrapper .dataTables_paginate li.paginate_button,
+.grm-sync-page .legal-entity-page #reportMatrixTable_wrapper .dataTables_paginate li.paginate_button {
+  display: list-item !important;
+}
+
+.grm-sync-page .pagination {
+  gap: 4px;
+}
+
+.grm-sync-page .pagination .page-link {
+  border-radius: 6px !important;
+}
+
+/* Themed pagination: Legal Entity + Timeline + Audit + Share Holders (Previous, numbers, Next) */
+.legal-entity-page #entityTable_wrapper .dataTables_paginate,
+.legal-entity-page #timelineTable_wrapper .dataTables_paginate,
+.legal-entity-page #auditTable_wrapper .dataTables_paginate,
+.legal-entity-page #shareholderTable_wrapper .dataTables_paginate,
+.legal-entity-page #draftEntitiesTable_wrapper .dataTables_paginate,
+.legal-entity-page #generatedPeriodsTable_wrapper .dataTables_paginate,
+.legal-entity-page #deliverablesAllTable_wrapper .dataTables_paginate,
+.legal-entity-page #usersTable_wrapper .dataTables_paginate,
+.legal-entity-page #modulesTable_wrapper .dataTables_paginate,
+.legal-entity-page #teamsTable_wrapper .dataTables_paginate,
+.legal-entity-page #emailGroupsTable_wrapper .dataTables_paginate,
+.legal-entity-page #emailRecipientsTable_wrapper .dataTables_paginate,
+.legal-entity-page #emailNotificationsTable_wrapper .dataTables_paginate,
+.legal-entity-page #emailTemplatesTable_wrapper .dataTables_paginate,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .dataTables_paginate,
+.legal-entity-page #reportMatrixTable_wrapper .dataTables_paginate {
+  width: 100%;
+  text-align: right;
+}
+
+.legal-entity-page #entityTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #timelineTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #auditTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #shareholderTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #draftEntitiesTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #generatedPeriodsTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #deliverablesAllTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #usersTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #modulesTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #teamsTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #emailGroupsTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #emailRecipientsTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #emailNotificationsTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #emailTemplatesTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .dataTables_paginate .pagination,
+.legal-entity-page #reportMatrixTable_wrapper .dataTables_paginate .pagination {
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+
+.legal-entity-page #entityTable_wrapper .pagination .page-link,
+.legal-entity-page #timelineTable_wrapper .pagination .page-link,
+.legal-entity-page #auditTable_wrapper .pagination .page-link,
+.legal-entity-page #shareholderTable_wrapper .pagination .page-link,
+.legal-entity-page #draftEntitiesTable_wrapper .pagination .page-link,
+.legal-entity-page #generatedPeriodsTable_wrapper .pagination .page-link,
+.legal-entity-page #deliverablesAllTable_wrapper .pagination .page-link,
+.legal-entity-page #usersTable_wrapper .pagination .page-link,
+.legal-entity-page #modulesTable_wrapper .pagination .page-link,
+.legal-entity-page #teamsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailGroupsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailRecipientsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailNotificationsTable_wrapper .pagination .page-link,
+.legal-entity-page #emailTemplatesTable_wrapper .pagination .page-link,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .pagination .page-link,
+.legal-entity-page #reportMatrixTable_wrapper .pagination .page-link {
+  border-radius: 6px !important;
+  border-color: #d8dee6;
+  color: var(--primary);
+  font-size: 13px;
+  padding: 0.35rem 0.65rem;
+  min-width: 2.25rem;
+  text-align: center;
+}
+
+.legal-entity-page #entityTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #timelineTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #auditTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #shareholderTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #draftEntitiesTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #generatedPeriodsTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #deliverablesAllTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #usersTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #modulesTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #teamsTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #emailGroupsTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #emailRecipientsTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #emailNotificationsTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #emailTemplatesTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .pagination .page-item.active .page-link,
+.legal-entity-page #reportMatrixTable_wrapper .pagination .page-item.active .page-link {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+.legal-entity-page #entityTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #timelineTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #auditTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #shareholderTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #draftEntitiesTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #generatedPeriodsTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #deliverablesAllTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #usersTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #modulesTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #teamsTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #emailGroupsTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #emailRecipientsTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #emailNotificationsTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #emailTemplatesTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover,
+.legal-entity-page #reportMatrixTable_wrapper .pagination .page-item:not(.disabled) .page-link:hover {
+  background: rgba(26, 35, 50, 0.08);
+  border-color: #c5cdd8;
+  color: var(--primary);
+}
+
+.legal-entity-page #entityTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #timelineTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #auditTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #shareholderTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #draftEntitiesTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #generatedPeriodsTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #deliverablesAllTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #usersTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #modulesTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #teamsTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #emailGroupsTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #emailRecipientsTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #emailNotificationsTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #emailTemplatesTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #deliverablesTemplatesTable_wrapper .pagination .page-item.disabled .page-link,
+.legal-entity-page #reportMatrixTable_wrapper .pagination .page-item.disabled .page-link {
+  color: #adb5bd;
+  background: #f8f9fa;
+}
+
+/* Report Matrix — toolbar (search + export) + fixed-layout table + ellipsis columns */
+.legal-entity-page .grm-rm-table-toolbar {
+  gap: 0.75rem;
+}
+
+.legal-entity-page .grm-rm-search-slot {
+  min-width: 0;
+}
+
+.legal-entity-page .grm-rm-search-slot .legal-datatable-search-mount {
+  width: 100%;
+  max-width: 360px;
+}
+
+.legal-entity-page .grm-report-matrix-table-wrap {
+  border: 1px solid #e9edf2;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.legal-entity-page table.grm-report-matrix-table {
+  table-layout: fixed;
+  margin-bottom: 0;
+}
+
+.legal-entity-page table.grm-report-matrix-table th,
+.legal-entity-page table.grm-report-matrix-table td {
+  vertical-align: middle;
+}
+
+.legal-entity-page table.grm-report-matrix-table .grm-rm-ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.legal-entity-page table.grm-report-matrix-table .grm-rm-td-num,
+.legal-entity-page table.grm-report-matrix-table .grm-rm-th-num {
+  width: 2.5rem;
+}
+
+.legal-entity-page table.grm-report-matrix-table .grm-rm-td-attach,
+.legal-entity-page table.grm-report-matrix-table .grm-rm-th-attach {
+  width: 8.5rem;
+  white-space: nowrap;
+}
+
+.legal-entity-page table.grm-report-matrix-table .grm-rm-td-attach .btn {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.legal-entity-page table.grm-report-matrix-table .grm-rm-td-date,
+.legal-entity-page table.grm-report-matrix-table .grm-rm-th-date {
+  white-space: nowrap;
+}
+
+.legal-entity-page table.grm-report-matrix-table .grm-rm-status-pill {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* ——— Standalone login (split enterprise layout) ——— */
+html.grm-login-html,
+body.grm-login-page {
+  height: 100%;
+  margin: 0;
+}
+
+body.grm-login-page {
+  min-height: 100vh;
+  background: var(--surface);
+  font-family: "IBM Plex Sans", "DM Sans", sans-serif;
+}
+
+.grm-login-split {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Mobile: keep navy brand panel on top; form below */
+@media (max-width: 991.98px) {
+  .grm-login-brand {
+    order: -1;
+  }
+}
+
+@media (min-width: 992px) {
+  .grm-login-split {
+    flex-direction: row;
+  }
+}
+
+.grm-login-brand {
+  flex: 1 1 auto;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.75rem;
+  background: linear-gradient(160deg, #1a2332 0%, #15202b 45%, #243548 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .grm-login-brand {
+    flex: 1 1 50%;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+.grm-login-brand::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: min(90vw, 520px);
+  height: min(90vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(21, 122, 110, 0.22) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.grm-login-brand::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -30% -25%;
+  width: min(70vw, 400px);
+  height: min(70vw, 400px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.grm-login-brand-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 22rem;
+}
+
+.grm-login-brand-mark {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.25rem;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.grm-login-brand-title {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.grm-login-brand-tagline {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+  font-weight: 400;
+}
+
+.grm-login-brand-divider {
+  width: 3rem;
+  height: 3px;
+  border-radius: 2px;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(90deg, transparent, rgba(21, 122, 110, 0.9), transparent);
+}
+
+.grm-login-form-wrap {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem 2.5rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+@media (min-width: 992px) {
+  .grm-login-form-wrap {
+    flex: 1 1 50%;
+    padding: 2.5rem 2rem;
+  }
+}
+
+.grm-login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(26, 35, 50, 0.04), 0 20px 50px rgba(26, 35, 50, 0.08);
+  border: 1px solid rgba(26, 35, 50, 0.06);
+  padding: 2rem 1.75rem 1.75rem;
+}
+
+@media (min-width: 576px) {
+  .grm-login-card {
+    padding: 2.25rem 2rem 2rem;
+  }
+}
+
+.grm-login-card-head {
+  margin-bottom: 1.5rem;
+}
+
+.grm-login-card-head h2 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin: 0 0 0.35rem;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+
+.grm-login-card-head p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.grm-login-card .form-label {
+  font-weight: 500;
+  font-size: 0.8125rem;
+  color: #334155;
+}
+
+.grm-login-card .form-control {
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  border-color: #e2e8f0;
+  background: #fafbfc;
+}
+
+.grm-login-card .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26, 35, 50, 0.12);
+  background: #fff;
+}
+
+.grm-login-card .btn-add {
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.grm-login-demo {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e8f4fc 100%);
+  border: 1px solid #bfdbfe;
+  text-align: left;
+}
+
+.grm-login-demo-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1e40af;
+  margin-bottom: 0.65rem;
+}
+
+.grm-login-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+  font-size: 0.875rem;
+  margin-bottom: 0.4rem;
+}
+
+.grm-login-demo-row:last-child {
+  margin-bottom: 0;
+}
+
+.grm-login-demo-row dt {
+  margin: 0;
+  font-weight: 600;
+  color: #475569;
+  min-width: 4.5rem;
+}
+
+.grm-login-demo-row dd {
+  margin: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #0f172a;
+  word-break: break-all;
+}
